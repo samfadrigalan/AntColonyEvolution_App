@@ -3,6 +3,6 @@ applications:
   memory: 256M
   instances: 1
   domain: mybluemix.net
-  name: AntColony-node
-  host: AntColony-node
+  name: AntColony
+  host: AntColony
   disk_quota: 1024M

@@ -4,5 +4,8 @@
     "highcharts": "^5.0.5",
     "materialize-css": "^0.97.8"
   },
-  "scripts": {}
+  "scripts": {},
+  "css": [{
+    "path": "materialize-css/bin/materialize.css"
+  }]
 }
