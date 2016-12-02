@@ -16,5 +16,5 @@ The Node.js Starter demonstrates a simple, reusable Node.js web application base
 1. Connect to Bluemix `bluemix api https://api.ng.bluemix.net`
 2. Log in to Bluemix. `bluemix login -u samiam239@live.com -o "CSC 4444 LSU" -s "Ants" -sso`
 3. cf push "AntColongy"
-4. Access the app via `AntColony.mybluemix.net`
+4. Access the app via `AntColony-node.mybluemix.net`
 [Install Node.js]: https://nodejs.org/en/download/
