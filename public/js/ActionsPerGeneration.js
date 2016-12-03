@@ -1,4 +1,4 @@
-var url = "http://localhost:6002/api/generation/2";
+var url = document.URL + "api/generation/2";
 var json = new Array();
 var sum = 0;
 $.getJSON( url, function( array ) {
@@ -7,7 +7,6 @@ $.getJSON( url, function( array ) {
     // json[i] = json[i]  * 100;
     sum += json[i]
   }
-  // console.log(sum);
   // sum = 100- sum;
   // console.log(sum);
   // console.log(json[0] +sum);
