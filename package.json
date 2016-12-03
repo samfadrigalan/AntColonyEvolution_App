@@ -1,17 +1,19 @@
 {
-	"name": "AntColony",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"start": "node app.js"
-	},
-	"dependencies": {
-		"express": "4.13.x",
-		"cfenv": "1.0.x"
-	},
-	"repository": {},
-	"engines": {
-		"npm": "3.x",
-		"node": "4.x"
-	} 
+  "name": "AntColony",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "cfenv": "1.0.x",
+    "express": "4.13.x",
+    "highcharts": "^5.0.5",
+    "materialize-css": "^0.97.8"
+  },
+  "repository": {},
+  "engines": {
+    "npm": "3.x",
+    "node": "4.x"
+  }
 }
