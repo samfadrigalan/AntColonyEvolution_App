@@ -9,6 +9,7 @@
     "cfenv": "1.0.x",
     "express": "4.13.x",
     "highcharts": "^5.0.5",
+    "http": "0.0.0",
     "materialize-css": "^0.97.8"
   },
   "repository": {},

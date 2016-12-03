@@ -14,6 +14,7 @@ var cfenv = require('cfenv');
 
 // create a new express server
 var app = express();
+var http = require('http');
 
 // serve the files out of ./public as our main files
 app.use(express.static(__dirname + '/public'));
@@ -56,6 +57,31 @@ app.get('/api/generation/:id', function (req, res) {
     }
     res.json(arr);
 });
+
+app.get('/api/backendTest/:id', function (req, res) {
+    http.get({
+        hostname: 'localhost',
+        port: 3001,
+        path: '/api/generation/' + req.params.id,
+        agent: false  // create a new agent just for this one request
+    }, function(response) {
+        console.log('STATUS: ' + response.statusCode);
+        console.log('HEADERS: ' + JSON.stringify(response.headers));
+
+        var bodyChunks = [];
+        console.log(response);
+        response.on('data', function(chunk) {
+            bodyChunks.push(chunk);
+        }).on('end', function() {
+            var body = Buffer.concat(bodyChunks);
+            console.log('BODY: ' + body);
+            res.json(JSON.parse(body));
+            // ...and/or process the entire body here.
+        });
+        //res.send(response);
+    });
+});
+
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
