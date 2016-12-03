@@ -29,6 +29,38 @@ app.get('/api/hello', function (req, res) {
     res.send("hello worlds");
 });
 
+app.get('/api/name/:name', function (req, res) {
+    res.json({"name": req.params.name});
+});
+app.get('/api/experiment/:id', function (req, res) {
+    var arr = [];
+    var i;
+    for (i=0; i<1000; i++) {
+        arr[i] = getRandomInt(1, 5000);
+    }
+    res.json(arr);
+});
+app.get('/api/generation/:id', function (req, res) {
+    var arr = [];
+    var i, max;
+    max = 64000;
+    for (i=0; i<64; i++) {
+        arr[i] = 0;
+    }
+    for (i=0; i<max; i++) {
+        var index = getRandomInt(0,64);
+        arr[index] += 1;
+    }
+    for (i=0; i<64; i++) {
+        arr[i] = arr[i] / max;
+    }
+    res.json(arr);
+});
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+}
 // start server on the specified port and binding host
 app.listen(appEnv.port, '0.0.0.0', function () {
     // print a message when the server starts listening
