@@ -1,143 +1,45 @@
-$(function () {
-  Highcharts.chart('fitness', {
-      chart: {
-          type: 'column'
-      },
-      title: {
-          text: 'Stacked column chart'
-      },
-      xAxis: {
-          categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
-      },
-      yAxis: {
-          min: 0,
+var url = document.URL + "api/experiment/2";
+var json = new Array();
+var sum = 0;
+$.getJSON( url, function( array ) {
+  for(i = 0; i< array.length; i++){
+    json.push(array[i]);
+  }
+
+  $(function () {
+      Highcharts.chart('fitness', {
+        chart: {
+                zoomType: 'x'
+            },
           title: {
-              text: 'Total fruit consumption'
-          }
-      },
-      tooltip: {
-          pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
-          shared: true
-      },
-      plotOptions: {
-          column: {
-              stacking: 'percent'
-          }
-      },
-      series: [{
-          name: 'John',
-          data: [5, 3, 4, 7, 2]
-      }, {
-          name: 'Jane',
-          data: [2, 2, 3, 2, 1]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      } , {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
-      }, {
-          name: 'Joe',
-          data: [3, 4, 4, 2, 5]
+              text: 'Average Fitness vs Generation',
+              x: -20 //center
+          },
+          xAxis: {
+             title:{
+               text: 'Generation'
+             }
+         },
+          yAxis: {
+              title: {
+                  text: 'Average Fitness'
+              },
+              plotLines: [{
+                  value: 0,
+                  width: 1,
+                  color: '#808080'
+              }]
+          },
+          legend: {
+              layout: 'vertical',
+              align: 'right',
+              verticalAlign: 'middle',
+              borderWidth: 0
+          },
+          series: [{
+              name: 'Avg Fitness vs Generation',
+              data: json
       }]
   });
+});
 });
