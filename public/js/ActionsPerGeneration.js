@@ -2,28 +2,101 @@
 
 // var url = document.URL + "api/generation/2";
 var url = document.URL+ "api/data/";
-var json = new Array();
+var json1 = new Array();
 var sum = 0;
-var innerJson = new Array();
+var innerJson1 = new Array();
+var innerJson2 = new Array();
+var innerJson3 = new Array();
+var innerJson4 = new Array();
+var innerJson5 = new Array();
+var innerJson6 = new Array();
+var innerJson7 = new Array();
+var innerJson8 = new Array();
+var innerJson9 = new Array();
+var innerJson10 = new Array();
+var innerJson11 = new Array();
+var innerJson12 = new Array();
+var innerJson13 = new Array();
+var innerJson14 = new Array();
+
 $.getJSON( url, function( array ) {
   console.log(array.length);
-  for(i = 0; i< array.length; i++){
-    innerJson.push(array.successfulActionCount.noop);
-    innerJson.push(array.successfulActionCount.movement);
-    innerJson.push(array.successfulActionCount.memory);
-    innerJson.push(array.successfulActionCount.scent);
-    innerJson.push(array.successfulActionCount.timer);
-    innerJson.push(array.successfulActionCount.give);
-    innerJson.push(array.successfulActionCount.take);
-    innerJson.push(array.successfulActionCount.work);
-    innerJson.push(array.successfulActionCount.cultivate);
-    innerJson.push(array.successfulActionCount.build);
-    innerJson.push(array.successfulActionCount.raise);
-    innerJson.push(array.successfulActionCount.lower);
-    innerJson.push(array.successfulActionCount.reproduce);
-    innerJson.push(array.successfulActionCount.noop);
+    for(i = 0; i< array.length; i++) {
+        innerJson1.push(array[i].successfulActionCount.noop);
+    }
+    json1.push(innerJson1);
+    console.log(innerJson1);
+    for(i = 0; i< array.length; i++) {
+        innerJson2.push(array[i].successfulActionCount.movement);
 
+    }
+    json1.push(innerJson2);
+    console.log(innerJson2);
+    for(i = 0; i< array.length; i++) {
+        innerJson3.push(array[i].successfulActionCount.memory);
 
+    }
+    json1.push(innerJson3);
+    console.log(innerJson3.length);
+    for(i = 0; i< array.length; i++) {
+        innerJson4.push(array[i].successfulActionCount.scent);
+
+    }
+    json1.push(innerJson4);
+    console.log(innerJson4);
+    for(i = 0; i< array.length; i++) {
+        innerJson5.push(array[i].successfulActionCount.timer);
+    }
+    json1.push(innerJson5);
+    console.log(innerJson5);
+    for(i = 0; i< array.length; i++) {
+        innerJson6.push(array[i].successfulActionCount.harvest);
+    }
+    json1.push(innerJson6);
+    console.log(innerJson6);
+    for(i = 0; i< array.length; i++) {
+        innerJson7.push(array[i].successfulActionCount.give);
+    }
+    json1.push(innerJson7);
+    console.log(innerJson7);
+    for(i = 0; i< array.length; i++) {
+        innerJson8.push(array[i].successfulActionCount.take);
+    }
+    json1.push(innerJson8);
+    console.log(innerJson8);
+    for(i = 0; i< array.length; i++) {
+        innerJson9.push(array[i].successfulActionCount.work);
+    }
+    json1.push(innerJson9);
+    console.log(innerJson9);
+    for(i = 0; i< array.length; i++) {
+        innerJson10.push(array[i].successfulActionCount.cultivate);
+    }
+    json1.push(innerJson10);
+    console.log(innerJson10);
+    for(i = 0; i< array.length; i++) {
+        innerJson11.push(array[i].successfulActionCount.build);
+    }
+    json1.push(innerJson11);
+    console.log(innerJson11);
+    for(i = 0; i< array.length; i++) {
+        innerJson12.push(array[i].successfulActionCount.raise);
+    }
+    json1.push(innerJson12);
+    console.log(innerJson12);
+    for(i = 0; i< array.length; i++) {
+        innerJson13.push(array[i].successfulActionCount.lower);
+    }
+    json1.push(innerJson13);
+    console.log(innerJson13);
+    for(i = 0; i< array.length; i++) {
+
+        innerJson14.push(array[i].successfulActionCount.reproduce);
+
+    }
+    json1.push(innerJson14);
+    console.log(innerJson14);
+    console.log(json1);
 
 
 $(function () {
@@ -35,7 +108,6 @@ $(function () {
           text: 'Action Percentages per Simulation'
       },
       xAxis: {
-          categories: ['NoOp','Movement', 'Memory', 'Scent', 'Timer', "Harvest", "Give", "Take","Work","Cultivate","Build","Raise","Lower","Reproduce"],
           tickmarkPlacement: 'on',
           title: {
               enabled: false
@@ -62,15 +134,47 @@ $(function () {
           }
       },
       series: [{
-          data: [502, 635, 809, 947, 1402, 3634, 5268]
-      }, {
-          data: [106, 107, 111, 133, 221, 767, 1766]
-      }, {
-          data: [163, 203, 276, 408, 547, 729, 628]
-      }, {
-          data: [18, 31, 54, 156, 339, 818, 1201]
-      }, {
-          data: [2, 2, 2, 6, 13, 30, 46]
+          name: 'NoOp',
+          data: json1[0]
+      },{
+          name: 'Movement',
+          data: json1[1]
+      },{
+          name: 'Memory',
+          data: json1[2]
+      },{
+          name: 'Scent',
+          data: json1[3]
+      },{
+          name: 'Timer',
+          data: json1[4]
+      },{
+          name: 'Harvest',
+          data: json1[5]
+      },{
+          name: 'Give',
+          data: json1[6]
+      },{
+          name: 'Take',
+          data: json1[7]
+      },{
+          name: 'Work',
+          data: json1[8]
+      },{
+          name: 'Cultivate',
+          data: json1[9]
+      },{
+          name: 'Build',
+          data: json1[10]
+      },{
+          name: 'Raise',
+          data: json1[11]
+      },{
+          name: 'Lower',
+          data: json1[12]
+      },{
+          name: 'Reproduce',
+          data: json1[13]
       }]
   });
 });
