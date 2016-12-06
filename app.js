@@ -15,6 +15,12 @@ var cfenv = require('cfenv');
 // create a new express server
 var app = express();
 var http = require('http');
+var fs = require("fs");
+
+// Get content from file
+//var contents = fs.readFileSync("sample_output.json");
+//// Define to JSON type
+//var jsonContent = JSON.parse(contents);
 
 // serve the files out of ./public as our main files
 app.use(express.static(__dirname + '/public'));
@@ -30,6 +36,16 @@ var appEnv = cfenv.getAppEnv();
 // Set up API endpoints
 app.get('/api/hello', function (req, res) {
     res.send("hello worlds");
+});
+app.get('/api/data', function (req, res) {
+    var file = fs.createWriteStream('data.json');
+    var read = fs.createReadStream('sample_output.txt');
+    read.on('open', function() {
+
+    });
+    file.on('error', function(err){});
+
+    res.json(jsonContent);
 });
 app.get('/api/name/:name', function (req, res) {
     res.json({"name": req.params.name});
