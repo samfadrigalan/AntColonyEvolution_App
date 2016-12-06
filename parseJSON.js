@@ -98,6 +98,9 @@ function produceHistogram(data) {
   //console.log(histo);
 
   data.forEach(function(m) {
+    if(m.posFood == 0) {
+      return;
+    }
     //console.log("F: " + m.posFood + " I: " + Math.trunc(m.posFood/binSize));
     var e = histo[Math.trunc(m.posFood/binSize)];
     //console.log(e);
