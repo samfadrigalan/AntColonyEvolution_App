@@ -99,7 +99,7 @@ app.get('/api/backendTest/:id', function (req, res) {
 
 function parseData() {
     console.log("s");
-    lineReader.eachLine('sample_output.txt', function(line, last) {
+    lineReader.eachLine('data.json', function(line, last) {
         data.push(JSON.parse(line));
         if (last) {
             data = parseJSON.compile_simulation(data);

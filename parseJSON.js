@@ -53,13 +53,14 @@ function produceHistogram(data) {
 
   console.log("Max: " + maxVal);
 
-  var binSize = maxVal / 249;
+  var binSize = maxVal / 99;
   var histo = [];
-  for(var i = 0; i < 250; i++) {
+  for(var i = 0; i < 100; i++) {
     histo.push({
       "bin" : binSize * i,
       "count" : 0,
       "failed_actions" : {
+        "noop" : 0,
         "movement" : 0,
         "memory" : 0,
         "scent" : 0,
@@ -74,7 +75,8 @@ function produceHistogram(data) {
         "lower" : 0,
         "reproduce" : 0
       },
-      "successful_actions" : {
+      "successfulActionCount" : {
+        "noop" : 0,
         "movement" : 0,
         "memory" : 0,
         "scent" : 0,
@@ -100,6 +102,25 @@ function produceHistogram(data) {
     var e = histo[Math.trunc(m.posFood/binSize)];
     //console.log(e);
     e.count++;
+    e.successfulActionCount["noop"] += m.successfulActionCount[0];
+    e.successfulActionCount["harvest"] += m.successfulActionCount[5];
+    e.successfulActionCount["give"] += m.successfulActionCount[6];
+    e.successfulActionCount["take"] += m.successfulActionCount[7];
+    e.successfulActionCount["work"] += m.successfulActionCount[8];
+    e.successfulActionCount["cultivate"] += m.successfulActionCount[9];
+    e.successfulActionCount["build"] += m.successfulActionCount[10];
+    e.successfulActionCount["raise"] += m.successfulActionCount[11];
+    e.successfulActionCount["lower"] += m.successfulActionCount[12];
+    e.successfulActionCount["reproduce"] += m.successfulActionCount[13];
+    for(var i = 1; i < 5; i++) {
+      e.successfulActionCount["movement"] += m.successfulActionCount[i];
+    }
+    for(var i = 1; i < 5; i++) {
+      e.successfulActionCount["memory"] += m.successfulActionCount[i];
+    }
+    for(var i = 1; i < 5; i++) {
+      e.successfulActionCount["movement"] += m.successfulActionCount[i];
+    }
   });
 
   return histo;
