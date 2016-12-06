@@ -7,6 +7,13 @@ $.getJSON( url, function( array ) {
     // json[i] = json[i]  * 100;
     sum += json[i]
   }
+    sum = 0;
+    for (i=0; i<64; i++) {
+        json[i] = 1/64 * 100;
+        sum += json[i]
+    }
+    console.log(json);
+    console.log(sum);
   // sum = 100- sum;
   // console.log(sum);
   // console.log(json[0] +sum);

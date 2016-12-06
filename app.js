@@ -18,18 +18,19 @@ var http = require('http');
 
 // serve the files out of ./public as our main files
 app.use(express.static(__dirname + '/public'));
-app.use('/scripts/materialize', express.static(__dirname + '/node_modules/materialize-css/dist/'));
 
+// serve scripts and other files
+app.use('/scripts/materialize', express.static(__dirname + '/node_modules/materialize-css/dist/'));
 app.use('/scripts/highcharts', express.static(__dirname + '/node_modules/highcharts/'));
 app.use('/css', express.static(__dirname + '/node_modules/material-css/dist/css/'));
-//
 
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
+
+// Set up API endpoints
 app.get('/api/hello', function (req, res) {
     res.send("hello worlds");
 });
-
 app.get('/api/name/:name', function (req, res) {
     res.json({"name": req.params.name});
 });
@@ -57,7 +58,6 @@ app.get('/api/generation/:id', function (req, res) {
     }
     res.json(arr);
 });
-
 app.get('/api/backendTest/:id', function (req, res) {
     http.get({
         hostname: 'localhost',
@@ -82,13 +82,15 @@ app.get('/api/backendTest/:id', function (req, res) {
     });
 });
 
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
-}
 // start server on the specified port and binding host
 app.listen(appEnv.port, '0.0.0.0', function () {
     // print a message when the server starts listening
     console.log("server starting on " + appEnv.url);
 });
+
+// helper functions
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+}
