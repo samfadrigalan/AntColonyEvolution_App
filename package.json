@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "read": "nodemon read.js"
   },
   "dependencies": {
     "cfenv": "1.0.x",
@@ -12,7 +13,9 @@
     "fs": "0.0.2",
     "highcharts": "^5.0.5",
     "http": "0.0.0",
-    "materialize-css": "^0.97.8"
+    "line-reader": "^0.4.0",
+    "materialize-css": "^0.97.8",
+    "util": "^0.10.3"
   },
   "repository": {},
   "engines": {

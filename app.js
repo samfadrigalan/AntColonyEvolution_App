@@ -6,7 +6,9 @@
 
 // This application uses express as its web server
 // for more info, see: http://expressjs.com
+var util = require('util');
 var express = require('express');
+var parseJSON = require('./parseJSON.js');
 
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
@@ -16,6 +18,11 @@ var cfenv = require('cfenv');
 var app = express();
 var http = require('http');
 var fs = require("fs");
+var lineReader = require('line-reader');
+var data = [];
+//
+
+//console.log(util.inspect())
 
 // Get content from file
 //var contents = fs.readFileSync("sample_output.json");
@@ -38,17 +45,9 @@ app.get('/api/hello', function (req, res) {
     res.send("hello worlds");
 });
 app.get('/api/data', function (req, res) {
-    var file = fs.createWriteStream('data.json');
-    var read = fs.createReadStream('sample_output.txt');
-    read.on('open', function() {
-
-    });
-    file.on('error', function(err){});
-
-    res.json(jsonContent);
+    res.json(data);
 });
 app.get('/api/name/:name', function (req, res) {
-    res.json({"name": req.params.name});
 });
 app.get('/api/experiment/:id', function (req, res) {
     var arr = [];
@@ -97,6 +96,22 @@ app.get('/api/backendTest/:id', function (req, res) {
         //res.send(response);
     });
 });
+
+function parseData() {
+    console.log("s");
+    lineReader.eachLine('sample_output.txt', function(line, last) {
+        data.push(JSON.parse(line));
+        if (last) {
+            data = parseJSON.compile_simulation(data);
+            data = parseJSON.produceHistogram(data);
+
+        }
+    });
+}
+parseData();
+
+
+
 
 // start server on the specified port and binding host
 app.listen(appEnv.port, '0.0.0.0', function () {
