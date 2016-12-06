@@ -16,7 +16,7 @@ $.getJSON( url, function( array ) {
               type: 'pie'
           },
           title: {
-              text: 'Action Percentages in a Generation'
+              text: 'Browser market shares January, 2015 to May, 2015'
           },
           tooltip: {
             formatter: function() {
